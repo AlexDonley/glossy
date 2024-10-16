@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Glossy</title>
+</head>
+<body>
+    <div class="columns">
+        <div class="column text">
+            <div class="highlight" id="highLight">a</div>
+            <div class="fulltext" id="fullText">
+                <span class="plus-minus">
+                    <button class="grow one" onclick="changeTextSize(4, fullText)">+</button>
+                    <button class="shrink one" onclick="changeTextSize(-4, fullText)">-</button>
+                </span>
+            </div>
+        </div>
+        <div class="column gloss" id="glossBox">
+            <div class="header">
+                <span class="head english">English</span>
+                <span class="head chinese">中文</span>
+            </div>
+            <div class="entries" id="glossEntries">
+
+            </div>
+            <span class="plus-minus two">
+                <button class="grow two" onclick="changeTextSize(4, glossEntries)">+</button>
+                <button class="shrink two" onclick="changeTextSize(-4, glossEntries)">-</button>
+            </span>
+            <button class="clear gloss-btn" onclick="clearGlosses()">X</button>
+            <button class="flip gloss-btn" onclick="flipGlosses()">||</button>
+        </div>
+    </div>
+</body>
+</html>

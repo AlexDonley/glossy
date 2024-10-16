@@ -1,0 +1,204 @@
+body {
+    color: black;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    font-family: century gothic, sans-serif
+}
+
+.columns {
+    width: calc(100vw - 30px);
+    height: calc(100vh - 30px);
+    display: flex;
+    margin: 15px
+}
+
+.column {
+    width: 50%;
+    
+}
+
+.highlight {
+    background: pink;
+    text-align: center;
+    font-size: 120pt;
+    border-radius: 15px;
+    font-weight: bold;
+    height: 50%;
+    line-height: calc(50vh - 30px);
+    margin-right: 15px
+}
+
+.fulltext {
+    text-align: center;
+    height: 50%;
+    text-align: left;
+    padding-top: 15px;
+    overflow: auto;
+    font-size: 20pt
+}
+
+.snip {
+    transition: background 0.5s, padding 0.5s;
+}
+
+.plus-minus {
+    position: absolute;
+    bottom: 15px;
+    display: flex
+}
+.plus-minus.two {
+    right: 30px;
+    bottom: 30px
+}
+
+.grow{
+    margin: 0;
+    font-size: 20pt;
+    width: 50px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-right: 0
+}
+.grow.one{
+    background: pink;
+    color: maroon;
+}
+.grow.two{
+    background: lightblue;
+    color: darkblue;
+}
+
+.shrink{
+    margin: 0;
+    font-size: 20pt;
+    font-weight: bold;
+    width: 50px;
+    height: 40px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-left: 0
+}
+.shrink.one{
+    color: pink;
+    background: maroon;
+}
+.shrink.two{
+    color: lightblue;
+    background: darkblue
+}
+
+.gloss-btn {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    bottom: 30px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+.gloss-btn.clear{
+    right: 190px
+}
+.gloss-btn.flip{
+    right: 140px
+}
+
+.gloss {
+    background: rgb(179, 179, 179);
+    color: rgb(66, 66, 66);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px
+}
+
+.head {
+    width: 50%;
+    color: black;
+    background: white;
+    border-radius: 15px;
+}
+
+.word {
+    width: 50%
+}
+
+.english {
+    text-align: right;
+    margin-right: 15px;
+    padding-right: 15px
+}
+
+.chinese {
+    text-align: left;
+    margin-left: 15px;
+    padding-left: 15px
+}
+
+.header {
+    display: flex;
+    font-size: 50pt
+}
+
+.entries{
+    font-size: 40pt;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.entries::-webkit-scrollbar {
+    display: none;
+}
+
+.entry {
+    display: flex;
+    border-bottom: 1px solid;
+    transition: font-size 0.5s, color 0.5s;
+}
+
+.color {
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+.pro.color {
+    background: rgb(208, 208, 255);
+}
+.verb.color {
+    background: red
+}
+.noun.color {
+    background: rgb(0, 183, 255)
+}
+.ex.color {
+    background: orange
+}
+.adj.color {
+    background: lightgreen
+}
+.adv.color {
+    background: turquoise
+}
+.phrase.color {
+    background: cyan
+}
+.prep.color {
+    background: yellow
+}
+.conj.color {
+    background: rgb(255, 255, 179)
+}
+.poss.color {
+    background: pink
+}
+.quest.color {
+    background: tan
+}
+.det.color {
+    background: lightgray
+}
+
+.new {
+    color: black;
+    font-size: 60pt;
+    font-weight: bold;
+}
