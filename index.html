@@ -10,13 +10,18 @@
 <body>
     <div class="columns">
         <div class="column text">
-            <div class="highlight" id="highLight">a</div>
-            <div class="fulltext" id="fullText">
-                <span class="plus-minus">
-                    <button class="grow one" onclick="changeTextSize(4, fullText)">+</button>
-                    <button class="shrink one" onclick="changeTextSize(-4, fullText)">-</button>
-                </span>
+            <div class="highlight" id="highLight">
+                
             </div>
+            <div class="fulltext" id="fullText">
+                
+            </div>
+            <span class="plus-minus">
+                <button class="grow one" onclick="changeTextSize(4, fullText)">+</button>
+                <button class="shrink one" onclick="changeTextSize(-4, fullText)">-</button>
+            </span>
+            <button class="menu gloss-btn" onclick="toggleMenu()">T</button>
+            <button class="de-highlight gloss-btn" onclick="dehighlightText()">X</button>
         </div>
         <div class="column gloss" id="glossBox">
             <div class="header">
@@ -32,6 +37,19 @@
             </span>
             <button class="clear gloss-btn" onclick="clearGlosses()">X</button>
             <button class="flip gloss-btn" onclick="flipGlosses()">||</button>
+        </div>
+    </div>
+    <div class="text-selector" id="textSelector">
+        <div class="menu-background"></div>
+        <div class="text-dropdown">
+            <label for="text-names">Choose a text:</label>
+
+            <select name="text-names" class="text-names" id="textNames">
+                <option value="p3">p3</option>
+                <option value="halloween">halloween</option>
+            </select>
+            
+            <button class="go" onclick="getSentenceJSON(textNames.value)">GO</button>
         </div>
     </div>
 </body>
