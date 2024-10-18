@@ -401,7 +401,7 @@
     },
     {
       "english": "that",
-      "chinese": "那",
+      "chinese": "那(個)",
       "pos": "pro"
     },
     {
@@ -491,7 +491,7 @@
     },
     {
       "english": "since",
-      "chinese": "自_以來就",
+      "chinese": "自_以來_",
       "pos": "prep"
     },
     {
@@ -531,7 +531,7 @@
     },
     {
       "english": "so",
-      "chinese": "太",
+      "chinese": "很",
       "pos": "adv"
     },
     {
@@ -546,7 +546,7 @@
     },
     {
       "english": "Well",
-      "chinese": "-",
+      "chinese": "嗯",
       "pos": "ex"
     },
     {
@@ -581,7 +581,7 @@
     },
     {
       "english": "in person",
-      "chinese": "親自",
+      "chinese": "當面/親自",
       "pos": "adv"
     },
     {
