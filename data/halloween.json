@@ -21,12 +21,12 @@
     },
     {
       "english": "excited",
-      "chinese": "興奮",
+      "chinese": "感到興奮",
       "pos": "adj"
     },
     {
       "english": "for",
-      "chinese": "對_感到",
+      "chinese": "對",
       "pos": "prep"
     },
     {
@@ -141,12 +141,12 @@
     },
     {
       "english": "costumes",
-      "chinese": "戲服",
+      "chinese": "服裝",
       "pos": "noun"
     },
     {
       "english": "and",
-      "chinese": "和",
+      "chinese": "然後",
       "pos": "conj"
     },
     {
@@ -286,7 +286,7 @@
     },
     {
       "english": "Fun",
-      "chinese": "樂趣",
+      "chinese": "好玩",
       "pos": "noun"
     },
     {
@@ -311,7 +311,7 @@
     },
     {
       "english": "costumes",
-      "chinese": "戲服",
+      "chinese": "服裝",
       "pos": "noun"
     },
     {
@@ -396,7 +396,7 @@
     },
     {
       "english": "see",
-      "chinese": "明白了",
+      "chinese": "知道了",
       "pos": "verb"
     },
     {
@@ -421,7 +421,7 @@
     },
     {
       "english": "want to",
-      "chinese": "想",
+      "chinese": "想要",
       "pos": "verb"
     },
     {
@@ -455,7 +455,7 @@
       "pos": "pro"
     },
     {
-      "english": "m going to",
+      "english": "'m going to",
       "chinese": "要",
       "pos": "verb"
     },
@@ -535,7 +535,7 @@
       "pos": "pro"
     },
     {
-      "english": "s",
+      "english": "'s",
       "chinese": "是",
       "pos": "verb"
     },
@@ -551,7 +551,7 @@
     },
     {
       "english": "holiday",
-      "chinese": "假期",
+      "chinese": "節慶",
       "pos": "noun"
     },
     {
@@ -575,7 +575,7 @@
       "pos": "pro"
     },
     {
-      "english": "ll",
+      "english": "'ll",
       "chinese": "會",
       "pos": "verb"
     },
@@ -605,7 +605,7 @@
       "pos": "pro"
     },
     {
-      "english": "ll",
+      "english": "'ll",
       "chinese": "會",
       "pos": "verb"
     },
