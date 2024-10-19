@@ -52,7 +52,9 @@ function setSentence(arr){
 window.addEventListener('mousedown', (e) => {
     // console.log(e.target);
 
-    if (e.target.classList.contains('snip')) {
+    checkClass = e.target.classList
+
+    if (checkClass.contains('snip')) {
         targetIndex = e.target.id.substring(1)
         
         targetWord = currentSentences[targetIndex].english
@@ -73,14 +75,25 @@ window.addEventListener('mousedown', (e) => {
             pickElement.classList += ' color'
         }
     }
-    if (e.target.classList.contains('menu-background')) {
+    if (checkClass.contains('menu-background')) {
         toggleMenu()
+    }
+    if(checkClass.contains('entry')) {
+        
+        if(checkClass.contains('new')) {
+            checkClass.remove('new')
+        } else {
+            checkClass.add('new')
+        }
+
+        
     }
 });
 
 function addGloss(n) {
     newEntry = document.createElement('div')
-    newEntry.classList = 'entry'
+    newEntry.classList = 'entry new draggable'
+    newEntry.setAttribute("draggable", true)
     
     engSpan = document.createElement('span')
     engSpan.innerText = currentSentences[n].english
@@ -96,13 +109,38 @@ function addGloss(n) {
     if (prevNew[0]){
         prevNew[0].classList.remove('new')
     }
-
-    newEntry.classList.add('new')
     
     newEntry.append(chinSpan)
 
     glossEntries.prepend(newEntry)
+
+    //updateDraggables()
 }
+
+// function updateDraggables() {
+//     draggables = document.querySelectorAll('.draggable')
+
+//     draggables.forEach(item => {
+//         item.addEventListener('dragstart', () => {
+//             console.log('drag start')
+//             item.classList.add('dragging')
+//         })
+
+//         item.addEventListener('dragend', () => {
+//             item.classList.remove('dragging')
+//         })
+//     })
+// }
+
+// glossEntries.addEventListener('dragover', e => {
+
+// })
+
+// function placeDraggedElement(y) {
+//     const draggableElements = [...document.querySelectorAll('draggable:not(.dragging)')]
+
+//     draggableElements.reduce()
+// }
 
 function changeTextSize(n, str) {
     

@@ -34,8 +34,24 @@ body {
     text-align: left;
     padding-top: 15px;
     overflow: auto;
-    font-size: 20pt
+    font-size: 20pt;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
+.fulltext::-webkit-scrollbar {
+    display: none;
+}
+.fulltext::after{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: calc(50% - 15px);
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgba(255, 0, 0, 0) 90%, white);
+    pointer-events: none;
+}
+
 
 .snip {
     transition: background 0.5s, padding 0.5s;
@@ -137,7 +153,8 @@ body {
 }
 
 .word {
-    width: 50%
+    width: 50%;
+    pointer-events: none
 }
 
 .english {
