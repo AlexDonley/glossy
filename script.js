@@ -10,7 +10,7 @@ var gloss_size = 50
 var menuTog = true
 
 let translated = []
-const punctuation = ".,!?:;'\"/(){}[]~`|-_+=@#$%^&*"
+const punctuation = ".,!?:;'\"/(){}[]~`|-—_+=@#$%^&*"
 let currentSentences;
 
 

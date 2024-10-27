@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="new_gloss.js" defer></script>
+    <title>Glossy</title>
+</head>
+<body>
+    <div class="wrap-all">
+        <div class="grid-column" id="gridColumn">
+            <div class="grid1">English</div>
+            <div class="grid2">Chinese</div>
+            <div class="grid3">Category</div>
+        </div>
+    </div>
+    <template line-entry-template>
+        <button onclick="addNewLine()">+</button>
+        <button onclick="deleteLine()">-</button>
+        <input type="text" class="grid1 user-input left-side">
+        <input type="text" class="grid2 user-input right-side">
+        <select name="part-of-speech" class="grid3 user-input pos" id="partOfSpeech">
+            <option value="noun">noun</option>
+            <option value="verb">verb</option>
+            <option value="adj">adjective</option>
+            <option value="adv">adverb</option>
+            <option value="prep">preposition</option>
+            <option value="conj">conjunction</option>
+            <option value="phrase">phrase</option>
+            <option value="ex">exclamation</option>
+            <option value="poss">possessive</option>
+            <option value="pro">pronoun</option>
+            <option value="quest">question</option>
+        </select>
+    </template>
+</body>
+</html>
