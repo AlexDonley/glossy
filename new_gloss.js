@@ -37,4 +37,47 @@ function deleteLine(n) {
     }
 }
 
+function generateJSON() {
+    const allEnglishElements = document.querySelectorAll('.grid1:not(.top)');
+    const allChineseElements = document.querySelectorAll('.grid2:not(.top)');
+    const allPOSElements = document.querySelectorAll('.grid3:not(.top)');
+
+    var allEnglishWords = [];
+    var allChineseWords = [];
+    var allPOS = [];
+    var fullData = [];
+
+    Array.from(allEnglishElements).forEach(element => {
+        allEnglishWords.push(element.value)
+    })
+    Array.from(allChineseElements).forEach(element => {
+        allChineseWords.push(element.value)
+    })
+    Array.from(allPOSElements).forEach(element => {
+        allPOS.push(element.value)
+    })
+
+    for(var i = 0; i < allEnglishWords.length; i++) {     
+    
+        fullData.push({ 
+            "english" : allEnglishWords[i],
+            "chinese" : allChineseWords[i],
+            "pos"     : allPOS[i] 
+        });
+    }
+
+
+    JSONstring = JSON.stringify(fullData)
+    console.log(JSONstring)
+    download(JSONstring, 'json.txt', 'text/plain');
+}
+
+function download(content, fileName, contentType) {
+    var a = document.createElement("a");
+    var file = new Blob([content], {type: contentType});
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+}
+
 addNewLine()

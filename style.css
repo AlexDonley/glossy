@@ -327,3 +327,16 @@ body {
     width: 100%;
     transform: translateY(-5px)
 }
+
+.save {
+    height: 100px;
+    width: 100px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    border-radius: 50px;
+    color: white;
+    background: navy;
+    font-family: century gothic;
+    font-size: 20pt;
+}
