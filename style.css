@@ -316,3 +316,14 @@ body {
     height: 30px;
     font-family: century gothic
 }
+
+.return-home {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.home-button {
+    height: 100%;
+    width: 100%;
+    transform: translateY(-5px)
+}
