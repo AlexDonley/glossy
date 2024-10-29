@@ -6,16 +6,44 @@ const textSelector = document.getElementById('textSelector')
 const textNames = document.getElementById('textNames')
 
 var text_size = 20
-var gloss_size = 50
+var gloss_size = 40
 var menuTog = true
+
+const availableGlosses = ['p3', 'p6', 'halloween']
+const sessionKeys = Object.keys(sessionStorage)
 
 let translated = []
 const punctuation = ".,!?:;'\"/(){}[]~`|-—_+=@#$%^&*"
 let currentSentences;
 
 
+function loadTextOptions() {
+    
+    allGlosses = availableGlosses
+    
+    // sessionKeys.forEach((key) => {
+    //     if (!(key == "IsThisFirstTime_Log_From_LiveServer")) {
+    //         allGlosses.push(key)
+    //     }
+    // })
+    
+    allGlosses.forEach(item => {
+        newOption = document.createElement('option')
+        newOption.setAttribute("value", item)
+        newOption.innerText = item
+
+        textNames.append(newOption)
+    })
+}
+
+loadTextOptions()
+
 function getSentenceJSON(name) {
-  fetch("./data/" + name + ".json")
+  if (sessionKeys.includes(name)) {
+    //console.log(sessionStorage.entry)
+    currentSentences = JSON.parse(sessionStorage.entry_title)
+  } else {
+    fetch("./data/" + name + ".json")
     .then(res => res.json())
     .then(data => {
       currentSentences = data
@@ -24,8 +52,8 @@ function getSentenceJSON(name) {
       setSentence(currentSentences)
       toggleMenu()
     })
+  }
 }
-
 
 function setSentence(arr){
     n = 0
@@ -47,7 +75,6 @@ function setSentence(arr){
         n++
     })
 }
-
 
 window.addEventListener('mousedown', (e) => {
     // console.log(e.target);
@@ -85,8 +112,9 @@ window.addEventListener('mousedown', (e) => {
         } else {
             checkClass.add('new')
         }
-
-        
+    }
+    if(checkClass.contains('go')) {
+        getSentenceJSON(textNames.value)
     }
 });
 
@@ -197,10 +225,12 @@ function flipGlosses() {
     for (var i = 1; i < glossEntries.childNodes.length; i++){
         glossEntries.insertBefore(glossEntries.childNodes[i], glossEntries.firstChild);
     }
-    prevNew = document.getElementsByClassName('new')
-    if (prevNew[0]){
-        prevNew[0].classList.remove('new')
-    }
+    allBig = document.getElementsByClassName('new')
+    Array.from(allBig).forEach(element => {
+        if (element){
+            element.classList.remove('new')
+        }
+    })
 }
 
 function toggleMenu() {

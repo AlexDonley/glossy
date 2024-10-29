@@ -1,5 +1,6 @@
 const newLineTemplate = document.querySelector("[line-entry-template]")
 const gridColumn = document.getElementById('gridColumn')
+const userTitle = document.getElementById('userTitle')
 
 var lineCount = 0
 var totalLines = 0
@@ -69,7 +70,8 @@ function generateJSON() {
 
     JSONstring = JSON.stringify(fullData)
     console.log(JSONstring)
-    download(JSONstring, 'json.txt', 'text/plain');
+    sessionStorage.setItem("entry_" + userTitle.value, JSONstring)
+    download(JSONstring, userTitle.value + '.json', 'text/plain');
 }
 
 function download(content, fileName, contentType) {

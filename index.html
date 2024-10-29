@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
     <script src="script.js" defer></script>
     <title>Glossy</title>
 </head>
@@ -20,8 +21,16 @@
                 <button class="grow one" onclick="changeTextSize(4, fullText)">+</button>
                 <button class="shrink one" onclick="changeTextSize(-4, fullText)">-</button>
             </span>
-            <button class="menu gloss-btn" onclick="toggleMenu()">T</button>
-            <button class="de-highlight gloss-btn" onclick="dehighlightText()">X</button>
+            <button class="menu gloss-btn" onclick="toggleMenu()">
+                <span class="material-symbols-outlined">
+                    list
+                </span>
+            </button>
+            <button class="de-highlight gloss-btn" onclick="dehighlightText()">
+                <span class="material-symbols-outlined">
+                    delete_forever
+                </span>
+            </button>
         </div>
         <div class="column gloss" id="glossBox">
             <div class="header">
@@ -35,8 +44,16 @@
                 <button class="grow two" onclick="changeTextSize(4, glossEntries)">+</button>
                 <button class="shrink two" onclick="changeTextSize(-4, glossEntries)">-</button>
             </span>
-            <button class="clear gloss-btn" onclick="clearGlosses()">X</button>
-            <button class="flip gloss-btn" onclick="flipGlosses()">||</button>
+            <button class="clear gloss-btn" onclick="clearGlosses()">
+                <span class="material-symbols-outlined">
+                    delete_forever
+                </span>
+            </button>
+            <button class="flip gloss-btn" onclick="flipGlosses()">
+                <span class="material-symbols-outlined">
+                    swap_vert
+                </span>
+            </button>
         </div>
     </div>
     <div class="text-selector" id="textSelector">
@@ -45,15 +62,18 @@
         <div class="text-dropdown">
             <label for="text-names">Choose a text:</label>
 
+            <br>
+
             <select name="text-names" class="text-names" id="textNames">
-                <option value="p3">p3</option>
-                <option value="p6">p6</option>
-                <option value="halloween">halloween</option>
             </select>
             
-            <button class="go" onclick="getSentenceJSON(textNames.value)">GO</button>
+            <button class="go">GO</button>
 
-            <a href="./new_gloss.html">edit</a>
+            <a href="./html/new_gloss.html">
+                <span class="material-symbols-outlined md-60">
+                    edit_note
+                </span>
+            </a>
         </div>
     </div>
 </body>

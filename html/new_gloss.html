@@ -3,17 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="new_gloss.js" defer></script>
     <title>Glossy</title>
 </head>
 <body>
     <div class="wrap-all">
-        <button class="save" onclick="generateJSON()">save</button>
-        <div class="grid-column" id="gridColumn">
-            <a href="./index.html" class="return-home">
-                <button class="home-button">home</button>
+        <div class="left-bar">
+            <input type="text" class="user-input user-title" id="userTitle" value="title">
+            <a href="../index.html" class="return-home">
+                <button class="home-button side-bar-button">
+                    <a href="../index.html" class="return-home">
+                        <span class="material-symbols-outlined md-60">
+                            home
+                        </span>
+                    </a>
+                </button>
             </a>
+            <button class="save side-bar-button" onclick="generateJSON()">
+                <span class="material-symbols-outlined md-60">
+                    save
+                </span>
+            </button>
+        </div>
+        
+        <div class="grid-column" id="gridColumn">
+
             <div class="grid1 top">English</div>
             <div class="grid2 top">Chinese</div>
             <div class="grid3 top">Category</div>
