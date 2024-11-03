@@ -2,6 +2,8 @@ const newLineTemplate = document.querySelector("[line-entry-template]")
 const gridColumn = document.getElementById('gridColumn')
 const userTitle = document.getElementById('userTitle')
 
+const regex = /[A-Za-z0-9]/
+
 var lineCount = 0
 var totalLines = 0
 
@@ -16,6 +18,10 @@ function addNewLine() {
             command = "deleteLine("+ lineCount +")"
             
             child.setAttribute('onclick', command)
+        }
+        if (i == 2) {
+            
+            child.addEventListener("keydown", checkColumnOne)
         }
     }
     
@@ -80,6 +86,32 @@ function download(content, fileName, contentType) {
     a.href = URL.createObjectURL(file);
     a.download = fileName;
     a.click();
+}
+
+function checkColumnOne(e) {
+    element = e.target
+    pressedKey = e.key
+
+    if (pressedKey.length == 1) {
+        str = element.value + e.key
+    } else {
+        str = element.value
+    }
+
+    parentEl = element.parentElement.children
+    childIndex = Array.from(parentEl).indexOf(element)
+    //console.log(parentEl, element, childIndex)
+    
+    console.log(regex.test(str))
+
+    if (!regex.test(str)) {
+        parentEl[childIndex + 1].setAttribute("disabled", true)
+        parentEl[childIndex + 2].setAttribute("disabled", true)
+
+    } else {
+        parentEl[childIndex + 1].removeAttribute("disabled")
+        parentEl[childIndex + 2].removeAttribute("disabled")
+    }
 }
 
 addNewLine()
