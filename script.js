@@ -21,11 +21,11 @@ function loadTextOptions() {
     
     allGlosses = availableGlosses
     
-    // sessionKeys.forEach((key) => {
-    //     if (!(key == "IsThisFirstTime_Log_From_LiveServer")) {
-    //         allGlosses.push(key)
-    //     }
-    // })
+    sessionKeys.forEach((key) => {
+        if (key.substring(0, 6) == "entry_") {
+            allGlosses.push(key.substring(6))
+        }
+    })
     
     allGlosses.forEach(item => {
         newOption = document.createElement('option')
@@ -39,20 +39,29 @@ function loadTextOptions() {
 loadTextOptions()
 
 function getSentenceJSON(name) {
-  if (sessionKeys.includes(name)) {
-    //console.log(sessionStorage.entry)
-    currentSentences = JSON.parse(sessionStorage.entry_title)
-  } else {
-    fetch("./data/" + name + ".json")
-    .then(res => res.json())
-    .then(data => {
-      currentSentences = data
-      //console.log(currentSentences)
-      clearAll()
-      setSentence(currentSentences)
-      toggleMenu()
-    })
-  }
+    keyIndex = sessionKeys.indexOf("entry_" + name)
+  
+    if (keyIndex >= 0) {
+        
+        userString = sessionStorage.getItem("entry_" + name)
+        console.log(userString)
+        currentSentences = JSON.parse(userString)
+
+        clearAll()
+        setSentence(currentSentences)
+        toggleMenu()
+
+    } else {
+        fetch("./data/" + name + ".json")
+        .then(res => res.json())
+        .then(data => {
+            currentSentences = data
+            //console.log(currentSentences)
+            clearAll()
+            setSentence(currentSentences)
+            toggleMenu()
+        })
+    }
 }
 
 function setSentence(arr){
