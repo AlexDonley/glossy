@@ -9,7 +9,7 @@ var text_size = 20
 var gloss_size = 40
 var menuTog = true
 
-const availableGlosses = ['p3', 'p6', 'halloween']
+const availableGlosses = ['p3', 'p6', 'p7', 'halloween']
 const sessionKeys = Object.keys(sessionStorage)
 
 let translated = []
@@ -83,6 +83,10 @@ function setSentence(arr){
 
         n++
     })
+
+    fullText.append(document.createElement('br'))
+    fullText.append(document.createElement('br'))
+    fullText.append(document.createElement('br'))
 }
 
 window.addEventListener('mousedown', (e) => {
