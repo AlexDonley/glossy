@@ -9,7 +9,7 @@ var text_size = 20
 var gloss_size = 40
 var menuTog = true
 
-const availableGlosses = ['p3', 'p6', 'p7', 'p8', 'halloween']
+const availableGlosses = ['p3', 'p6', 'p7', 'p8', 'p9', 'halloween', 'christmas']
 const sessionKeys = Object.keys(sessionStorage)
 
 let translated = []
