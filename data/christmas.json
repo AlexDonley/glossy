@@ -57,7 +57,7 @@
   {
     "english": "much",
     "chinese": "多",
-    "pos": "adverb"
+    "pos": "adv"
   },
   {
     "english": "about",
@@ -327,7 +327,7 @@
   {
     "english": "presents",
     "chinese": "禮物",
-    "pos": "verb"
+    "pos": "noun"
   },
   {
     "english": "from Santa Claus",
