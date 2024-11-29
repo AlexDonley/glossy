@@ -302,7 +302,7 @@
   {
     "english": "please",
     "chinese": "請",
-    "pos": "adverb"
+    "pos": "adv"
   },
   {
     "english": "let",
@@ -327,7 +327,7 @@
   {
     "english": "Please",
     "chinese": "請",
-    "pos": "adverb"
+    "pos": "adv"
   },
   {
     "english": "let",
@@ -347,7 +347,7 @@
   {
     "english": "first",
     "chinese": "先",
-    "pos": "adverb"
+    "pos": "adv"
   },
   {
     "english": ",",
