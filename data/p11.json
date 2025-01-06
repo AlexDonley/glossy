@@ -170,9 +170,14 @@
     "pos": "adj"
   },
   {
-    "english": "the same place",
-    "chinese": "同一個地方",
-    "pos": "phrase"
+    "english": "the same",
+    "chinese": "同一個",
+    "pos": "adj"
+  },
+  {
+    "english": "place",
+    "chinese": "地方",
+    "pos": "noun"
   },
   {
     "english": "I",
@@ -181,7 +186,7 @@
   },
   {
     "english": "ve always been",
-    "chinese": "一直",
+    "chinese": "一直在",
     "pos": "verb"
   },
   {
@@ -191,7 +196,7 @@
   },
   {
     "english": "and",
-    "chinese": "",
+    "chinese": "然後",
     "pos": "conj"
   },
   {
@@ -200,8 +205,13 @@
     "pos": "pro"
   },
   {
-    "english": "ll keep wondering",
-    "chinese": "會一直想知道",
+    "english": "ll keep",
+    "chinese": "會一直",
+    "pos": "verb"
+  },
+  {
+    "english": "wondering",
+    "chinese": "想知道",
     "pos": "verb"
   },
   {
@@ -410,8 +420,18 @@
     "pos": "adv"
   },
   {
-    "english": "let me go",
-    "chinese": "讓我走",
+    "english": "let",
+    "chinese": "讓",
+    "pos": "verb"
+  },
+  {
+    "english": "me",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "go",
+    "chinese": "走",
     "pos": "verb"
   },
   {
