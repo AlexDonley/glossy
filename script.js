@@ -1,13 +1,41 @@
-const highLight = document.getElementById('highLight')
-const fullText = document.getElementById('fullText')
-const glossBox = document.getElementById('glossBox')
-const glossEntries = document.getElementById('glossEntries')
-const textSelector = document.getElementById('textSelector')
-const textNames = document.getElementById('textNames')
+import { splitPinyin, addPinTone, constructPinRT, constructZhuRT } from './js/ruby-text.js'
 
-var text_size = 20
-var gloss_size = 40
-var menuTog = true
+const highLight         = document.getElementById('highLight');
+const fullText          = document.getElementById('fullText');
+const glossBox          = document.getElementById('glossBox');
+const glossEntries      = document.getElementById('glossEntries');
+const textSelector      = document.getElementById('textSelector');
+const textNames         = document.getElementById('textNames');
+
+const growHLBtn         = document.querySelector('.grow.one');
+const shrinkHLBtn       = document.querySelector('.shrink.one');
+const growGlossesBtn    = document.querySelector('.grow.two');
+const shrinkGlossesBtn  = document.querySelector('.shrink.two');
+
+const menuBtn           = document.querySelector('.menu.gloss-btn');
+const clearHighlightBtn = document.querySelector('.de-highlight.gloss-btn');
+const clearGlossesBtn   = document.querySelector('.clear.gloss-btn');
+const flipGlossesBtn    = document.querySelector('.flip.gloss-btn');
+
+growHLBtn.addEventListener('click', changeTextSize(4, 'fullText'));
+shrinkHLBtn.addEventListener('click', changeTextSize(-4, 'fullText'));
+growGlossesBtn.addEventListener('click', changeTextSize(4, 'glossEntries'));
+shrinkGlossesBtn.addEventListener('click', changeTextSize(-4, 'glossEntries'));
+
+
+menuBtn.addEventListener('click', toggleMenu);
+clearHighlightBtn.addEventListener('click', dehighlightText);
+clearGlossesBtn.addEventListener('click', clearGlosses);
+flipGlossesBtn.addEventListener('click', flipGlosses);
+
+function increaseGlossSize() {
+    gloss_size += 4;
+    glossEntries.style.fontSize = gloss_size;
+}
+
+let text_size = 20
+let gloss_size = 40
+let menuTog = true
 
 const availableGlosses = [
     'p3', 'p6', 'p7', 'p8', 'p9', 
@@ -23,7 +51,7 @@ let currentSentences;
 
 function loadTextOptions() {
     
-    allGlosses = availableGlosses
+    const allGlosses = availableGlosses
     
     sessionKeys.forEach((key) => {
         if (key.substring(0, 6) == "entry_") {
@@ -32,7 +60,7 @@ function loadTextOptions() {
     })
     
     allGlosses.forEach(item => {
-        newOption = document.createElement('option')
+        const newOption = document.createElement('option')
         newOption.setAttribute("value", item)
         newOption.innerText = item
 
@@ -43,7 +71,7 @@ function loadTextOptions() {
 loadTextOptions()
 
 function getSentenceJSON(name) {
-    keyIndex = sessionKeys.indexOf("entry_" + name)
+    const keyIndex = sessionKeys.indexOf("entry_" + name)
   
     if (keyIndex >= 0) {
         
@@ -56,11 +84,11 @@ function getSentenceJSON(name) {
         toggleMenu()
 
     } else {
-        fetch("./data/" + name + ".json")
+        fetch("./data/json/" + name + ".json")
         .then(res => res.json())
         .then(data => {
             currentSentences = data
-            //console.log(currentSentences)
+            
             clearAll()
             setSentence(currentSentences)
             toggleMenu()
@@ -69,11 +97,11 @@ function getSentenceJSON(name) {
 }
 
 function setSentence(arr){
-    n = 0
+    let n = 0
     fullText.innerHTML = ''
     
     arr.forEach((set) => {
-        newSpan = document.createElement('span')
+        const newSpan = document.createElement('span')
         newSpan.innerText = set.english
         
         if (!punctuation.includes(set.english)) {
@@ -96,12 +124,12 @@ function setSentence(arr){
 window.addEventListener('mousedown', (e) => {
     // console.log(e.target);
 
-    checkClass = e.target.classList
+    const checkClass = e.target.classList
 
     if (checkClass.contains('snip')) {
-        targetIndex = e.target.id.substring(1)
+        const targetIndex = e.target.id.substring(1)
         
-        targetWord = currentSentences[targetIndex].english
+        const targetWord = currentSentences[targetIndex].english
         
         highLight.innerText = targetWord
         highLight.style.fontSize = 1000 / (targetWord.length + 4) + "pt"
@@ -114,7 +142,7 @@ window.addEventListener('mousedown', (e) => {
             translated.push(translation_check)
         }
 
-        pickElement = document.getElementById(e.target.id)
+        const pickElement = document.getElementById(e.target.id)
         if (!pickElement.classList.contains('color')) {
             pickElement.classList += ' color'
         }
@@ -136,21 +164,36 @@ window.addEventListener('mousedown', (e) => {
 });
 
 function addGloss(n) {
-    newEntry = document.createElement('div')
+    const newEntry = document.createElement('div')
     newEntry.classList = 'entry new draggable'
     newEntry.setAttribute("draggable", true)
     
-    engSpan = document.createElement('span')
+    const engSpan = document.createElement('span')
     engSpan.innerText = currentSentences[n].english
     engSpan.classList = 'word english'
     
     newEntry.append(engSpan)
 
-    chinSpan = document.createElement('span')
-    chinSpan.innerText = currentSentences[n].chinese
-    chinSpan.classList = 'word chinese'
+    const chinSpan = document.createElement('span')
+
+    // const chineseArr = currentSentences[n].chinese.split('');
+    // console.log(chineseArr);
+
+    // chineseArr.forEach(char => {
+    //     const thisPin = charToPin(char);
+        
+    //     const newPinyin = constructPinRT(
+    //         char,
+    //         addPinTone(splitPinyin(thisPin)),
+    //         'under'
+    //     )
+    //     chinSpan.append(newPinyin) 
+    // })
     
-    prevNew = document.getElementsByClassName('new')
+    chinSpan.innerText = currentSentences[n].chinese;
+    chinSpan.classList = 'word chinese';
+    
+    const prevNew = document.getElementsByClassName('new')
     if (prevNew[0]){
         prevNew[0].classList.remove('new')
     }
@@ -163,7 +206,7 @@ function addGloss(n) {
 }
 
 function updateDraggables() {
-    draggables = document.querySelectorAll('.draggable')
+    const draggables = document.querySelectorAll('.draggable')
 
     draggables.forEach(item => {
         item.addEventListener('dragstart', () => {
@@ -210,20 +253,25 @@ function placeDraggedElement(y) {
 
 function changeTextSize(n, str) {
     
-    if (str == fullText) {
-        text_size += n
-        if (text_size < 0) {
-            text_size -= n
-        }
+    return function () {
+        const thisElem = document.querySelector('#' + str);
+        
+        if (str == 'fullText') {
+            text_size += n;
+            if (text_size < 0) {
+                text_size -= n;
+            }
+            
+            thisElem.style.fontSize = text_size + "pt";
 
-        str.style.fontSize = text_size + "pt"
-    } else if (str == glossEntries) {
-        gloss_size += n
-        if (gloss_size < 0) {
-            gloss_size -= n
-        }
+        } else if (str == 'glossEntries') {
+            gloss_size += n;
+            if (gloss_size < 0) {
+                gloss_size -= n;
+            }
 
-        str.style.fontSize = gloss_size + "pt"
+            thisElem.style.fontSize = gloss_size + "pt";
+        }
     }
 }
 
@@ -242,7 +290,8 @@ function flipGlosses() {
     for (var i = 1; i < glossEntries.childNodes.length; i++){
         glossEntries.insertBefore(glossEntries.childNodes[i], glossEntries.firstChild);
     }
-    allBig = document.getElementsByClassName('new')
+    
+    const allBig = document.getElementsByClassName('new')
     Array.from(allBig).forEach(element => {
         if (element){
             element.classList.remove('new')
@@ -261,7 +310,7 @@ function toggleMenu() {
 }
 
 function dehighlightText() {
-    highlighted = document.querySelectorAll('.color')
+    const highlighted = document.querySelectorAll('.color')
     
     Array.from(highlighted).forEach((el) => {
         el.classList.remove('color')
