@@ -81,7 +81,7 @@
   },
   {
     "english": "It's",
-    "chinese": "這",
+    "chinese": "這是",
     "pos": "pro"
   },
   {
@@ -141,7 +141,7 @@
   },
   {
     "english": "That",
-    "chinese": "",
+    "chinese": "那",
     "pos": "pro"
   },
   {
@@ -206,7 +206,7 @@
   },
   {
     "english": "and sometimes",
-    "chinese": "有時",
+    "chinese": "還有時候",
     "pos": "adv"
   },
   {
@@ -241,7 +241,7 @@
   },
   {
     "english": "get",
-    "chinese": "收到了",
+    "chinese": "收到",
     "pos": "verb"
   },
   {
@@ -496,7 +496,7 @@
   },
   {
     "english": "that way",
-    "chinese": "這樣",
+    "chinese": "那樣",
     "pos": "adv"
   },
   {
