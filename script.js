@@ -1,4 +1,7 @@
-import { splitPinyin, addPinTone, constructPinRT, constructZhuRT } from './js/ruby-text.js'
+import { 
+    splitPinyin, addPinTone, charToPin,
+    constructPinRT, constructZhuRT 
+} from './js/ruby-text.js'
 
 const highLight         = document.getElementById('highLight');
 const fullText          = document.getElementById('fullText');
@@ -17,20 +20,32 @@ const clearHighlightBtn = document.querySelector('.de-highlight.gloss-btn');
 const clearGlossesBtn   = document.querySelector('.clear.gloss-btn');
 const flipGlossesBtn    = document.querySelector('.flip.gloss-btn');
 
+const pyCheck           = document.querySelector('#pyCheck');
+
 growHLBtn.addEventListener('click', changeTextSize(4, 'fullText'));
 shrinkHLBtn.addEventListener('click', changeTextSize(-4, 'fullText'));
 growGlossesBtn.addEventListener('click', changeTextSize(4, 'glossEntries'));
 shrinkGlossesBtn.addEventListener('click', changeTextSize(-4, 'glossEntries'));
-
 
 menuBtn.addEventListener('click', toggleMenu);
 clearHighlightBtn.addEventListener('click', dehighlightText);
 clearGlossesBtn.addEventListener('click', clearGlosses);
 flipGlossesBtn.addEventListener('click', flipGlosses);
 
-function increaseGlossSize() {
-    gloss_size += 4;
-    glossEntries.style.fontSize = gloss_size;
+pyCheck.addEventListener('change', togglePinyin)
+
+function togglePinyin() {
+    const allRT = document.querySelectorAll('rt')
+    
+    if (pyCheck.checked) {
+        allRT.forEach(rt => {
+            rt.classList.add('show')
+        })
+    } else {
+        allRT.forEach(rt => {
+            rt.classList.remove('show')
+        })
+    }
 }
 
 let text_size = 20
@@ -176,21 +191,24 @@ function addGloss(n) {
 
     const chinSpan = document.createElement('span')
 
-    // const chineseArr = currentSentences[n].chinese.split('');
-    // console.log(chineseArr);
+    const chineseArr = currentSentences[n].chinese.split('');
+    console.log(chineseArr);
 
-    // chineseArr.forEach(char => {
-    //     const thisPin = charToPin(char);
+    chineseArr.forEach(char => {
+        const thisPin = charToPin(char);
         
-    //     const newPinyin = constructPinRT(
-    //         char,
-    //         addPinTone(splitPinyin(thisPin)),
-    //         'under'
-    //     )
-    //     chinSpan.append(newPinyin) 
-    // })
+        if (thisPin) {
+            const newPinyin = constructPinRT(
+                char,
+                addPinTone(splitPinyin(thisPin)),
+                'under'
+            )
+            chinSpan.append(newPinyin) 
+        } else {
+            chinSpan.append(char)
+        }
+    })
     
-    chinSpan.innerText = currentSentences[n].chinese;
     chinSpan.classList = 'word chinese';
     
     const prevNew = document.getElementsByClassName('new')

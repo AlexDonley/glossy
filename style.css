@@ -361,3 +361,18 @@ body {
 .material-symbols-outlined.md-60 { 
     font-size: 50px; 
 }
+
+rt {
+    font-size: 0pt;
+    transition: font-size 0.5s;
+}
+
+rt.show {
+    font-size: 12pt;
+}
+
+.pinyin-checkbox {
+    position: absolute;
+    bottom: 30px;
+    right: 240px;
+}
