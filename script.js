@@ -20,8 +20,6 @@ const clearHighlightBtn = document.querySelector('.de-highlight.gloss-btn');
 const clearGlossesBtn   = document.querySelector('.clear.gloss-btn');
 const flipGlossesBtn    = document.querySelector('.flip.gloss-btn');
 
-const pyCheck           = document.querySelector('#pyCheck');
-
 growHLBtn.addEventListener('click', changeTextSize(4, 'fullText'));
 shrinkHLBtn.addEventListener('click', changeTextSize(-4, 'fullText'));
 growGlossesBtn.addEventListener('click', changeTextSize(4, 'glossEntries'));
@@ -32,25 +30,10 @@ clearHighlightBtn.addEventListener('click', dehighlightText);
 clearGlossesBtn.addEventListener('click', clearGlosses);
 flipGlossesBtn.addEventListener('click', flipGlosses);
 
-pyCheck.addEventListener('change', togglePinyin)
-
-function togglePinyin() {
-    const allRT = document.querySelectorAll('rt')
-    
-    if (pyCheck.checked) {
-        allRT.forEach(rt => {
-            rt.classList.add('show')
-        })
-    } else {
-        allRT.forEach(rt => {
-            rt.classList.remove('show')
-        })
-    }
-}
-
-let text_size = 20
-let gloss_size = 40
-let menuTog = true
+let totalGlosses = 0;
+let text_size = 20;
+let gloss_size = 40;
+let menuTog = true;
 
 const availableGlosses = [
     'p3', 'p6', 'p7', 'p8', 'p9', 
@@ -90,7 +73,7 @@ function getSentenceJSON(name) {
   
     if (keyIndex >= 0) {
         
-        userString = sessionStorage.getItem("entry_" + name)
+        const userString = sessionStorage.getItem("entry_" + name)
         console.log(userString)
         currentSentences = JSON.parse(userString)
 
@@ -181,6 +164,7 @@ window.addEventListener('mousedown', (e) => {
 function addGloss(n) {
     const newEntry = document.createElement('div')
     newEntry.classList = 'entry new draggable'
+    newEntry.id = 'gloss' + totalGlosses
     newEntry.setAttribute("draggable", true)
     
     const engSpan = document.createElement('span')
@@ -209,16 +193,25 @@ function addGloss(n) {
         }
     })
     
-    chinSpan.classList = 'word chinese';
+    chinSpan.classList = 'word chinese';    
+    newEntry.append(chinSpan);
+
+    const newCheck = document.createElement('input');
+    newCheck.type = 'checkbox';
+    newCheck.checked = false;
+    newCheck.classList.add('py-check');
+    newCheck.addEventListener('change', togglePinyin(totalGlosses));
     
+
+    newEntry.append(newCheck);
+
+    glossEntries.prepend(newEntry);
+    totalGlosses++
+
     const prevNew = document.getElementsByClassName('new')
     if (prevNew[0]){
         prevNew[0].classList.remove('new')
     }
-    
-    newEntry.append(chinSpan)
-
-    glossEntries.prepend(newEntry)
 
     updateDraggables()
 }
@@ -240,7 +233,7 @@ function updateDraggables() {
 }
 
 glossEntries.addEventListener('dragover', e => {
-    // console.log('dragging over')
+    
     e.preventDefault()
     const afterElement = placeDraggedElement(e.clientY)
     console.log(afterElement)
@@ -333,4 +326,24 @@ function dehighlightText() {
     Array.from(highlighted).forEach((el) => {
         el.classList.remove('color')
     })
+}
+
+function togglePinyin(idx) {
+
+    
+    return function () {
+        const parentElem = document.querySelector('#gloss' + idx);
+        const isChecked = parentElem.querySelector('input').checked;
+        const nestedRTs = parentElem.querySelectorAll('rt');
+    
+        if (isChecked) {
+            nestedRTs.forEach(rt => {
+                rt.classList.add('show')
+            })
+        } else {
+            nestedRTs.forEach(rt => {
+                rt.classList.remove('show')
+            })
+        }
+    }
 }
