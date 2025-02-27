@@ -189,6 +189,7 @@ body {
     display: flex;
     border-bottom: 1px solid;
     transition: font-size 0.5s, color 0.5s;
+    position: relative;
 }
 
 .color {
@@ -371,8 +372,11 @@ rt.show {
     font-size: 12pt;
 }
 
-.pinyin-checkbox {
+.py-check {
     position: absolute;
-    bottom: 30px;
-    right: 240px;
+    height: 20px;
+    width: 20px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%)
 }
