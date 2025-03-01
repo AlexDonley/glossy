@@ -11,49 +11,57 @@
 <body>
     <div class="columns">
         <div class="column text">
-            <div class="highlight" id="highLight">
+            <div class="highlight resize-txt" id="highLight">
                 
             </div>
-            <div class="fulltext" id="fullText">
+            <div class="fulltext" id="fullText" tabindex="0">
                 
             </div>
-            <span class="plus-minus">
-                <button class="grow one">+</button>
-                <button class="shrink one">-</button>
-            </span>
-            <button class="menu gloss-btn">
-                <span class="material-symbols-outlined">
-                    list
-                </span>
-            </button>
-            <button class="de-highlight gloss-btn">
-                <span class="material-symbols-outlined">
-                    delete_forever
-                </span>
-            </button>
+            <div class="button-bar">
+                <div class="plus-minus">
+                    <button class="grow one">+</button>
+                    <button class="shrink one">-</button>
+                </div>
+                <button class="de-highlight gloss-btn">
+                    <span class="material-symbols-outlined">
+                        delete_forever
+                    </span>
+                </button>
+                <button class="menu gloss-btn">
+                    <span class="material-symbols-outlined">
+                        list
+                    </span>
+                </button>
+            </div>
         </div>
         <div class="column gloss" id="glossBox">
             <div class="header">
-                <span class="head english">English</span>
-                <span class="head chinese">中文</span>
+                <div class="head resize-txt">
+                    <div>English</div>
+                </div>
+                <div class="head resize-txt">
+                    <div>中文</div>
+                </div>
             </div>
-            <div class="entries" id="glossEntries">
+            <div class="entries" id="glossEntries" tabindex="1">
 
             </div>
-            <span class="plus-minus two">
-                <button class="grow two">+</button>
-                <button class="shrink two">-</button>
-            </span>
-            <button class="clear gloss-btn">
-                <span class="material-symbols-outlined">
-                    delete_forever
-                </span>
-            </button>
-            <button class="flip gloss-btn">
-                <span class="material-symbols-outlined">
-                    swap_vert
-                </span>
-            </button>
+            <div class="button-bar two">
+                <button class="flip gloss-btn">
+                    <span class="material-symbols-outlined">
+                        swap_vert
+                    </span>
+                </button>
+                <button class="clear gloss-btn">
+                    <span class="material-symbols-outlined">
+                        delete_forever
+                    </span>
+                </button>
+                <div class="plus-minus two">
+                    <button class="grow two">+</button>
+                    <button class="shrink two">-</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="text-selector" id="textSelector">
