@@ -4,12 +4,12 @@ import {
 } from './js/ruby-text.js'
 import { fillMaxFontSize } from './js/resize-text.js'
 
-const highLight         = document.getElementById('highLight');
-const fullText          = document.getElementById('fullText');
-const glossBox          = document.getElementById('glossBox');
-const glossEntries      = document.getElementById('glossEntries');
-const textSelector      = document.getElementById('textSelector');
-const textNames         = document.getElementById('textNames');
+const highLight         = document.querySelector('#highLight');
+const fullText          = document.querySelector('#fullText');
+const glossBox          = document.querySelector('#glossBox');
+const glossEntries      = document.querySelector('#glossEntries');
+const textSelector      = document.querySelector('#textSelector');
+const textNames         = document.querySelector('#textNames');
 
 const growHLBtn         = document.querySelector('.grow.one');
 const shrinkHLBtn       = document.querySelector('.shrink.one');
@@ -32,6 +32,7 @@ clearGlossesBtn.addEventListener('click', clearGlosses);
 flipGlossesBtn.addEventListener('click', flipGlosses);
 
 let totalGlosses = 0;
+let currentIdx = -1;
 let text_size = 20;
 let gloss_size = 40;
 let menuTog = true;
@@ -91,6 +92,8 @@ function getSentenceJSON(name) {
             clearAll()
             setSentence(currentSentences)
             toggleMenu()
+
+            currentIdx = -1
         })
     }
 }
@@ -128,26 +131,13 @@ window.addEventListener('mousedown', (e) => {
     if (checkClass.contains('snip')) {
         const targetIndex = e.target.id.substring(1)
         
-        const targetWord = currentSentences[targetIndex].english
-
-        fillMaxFontSize(highLight, targetWord, 15);
-
-        let translation_check = targetWord.toLowerCase() + "_" + currentSentences[targetIndex].chinese
-        console.log(translation_check)
-
-        if (!translated.includes(translation_check)) {
-            addGloss(targetIndex)
-            translated.push(translation_check)
-        }
-
-        const pickElement = document.getElementById(e.target.id)
-        if (!pickElement.classList.contains('color')) {
-            pickElement.classList += ' color'
-        }
+        highlightTranslate(targetIndex)
     }
+
     if (checkClass.contains('menu-background')) {
         toggleMenu()
     }
+
     if(checkClass.contains('entry')) {
         
         if(checkClass.contains('new')) {
@@ -156,10 +146,31 @@ window.addEventListener('mousedown', (e) => {
             checkClass.add('new')
         }
     }
+
     if(checkClass.contains('go')) {
         getSentenceJSON(textNames.value)
     }
 });
+
+function highlightTranslate(idx) {
+    currentIdx = idx
+    const targetWord = currentSentences[idx].english
+
+    fillMaxFontSize(highLight, targetWord, 15);
+
+    let translation_check = targetWord.toLowerCase() + "_" + currentSentences[idx].chinese
+    console.log(translation_check)
+
+    if (!translated.includes(translation_check)) {
+        addGloss(idx)
+        translated.push(translation_check)
+    }
+
+    const pickElement = document.querySelector("#n" + idx)
+    if (!pickElement.classList.contains('color')) {
+        pickElement.classList.add('color')
+    }
+}
 
 function addGloss(n) {
     const newEntry = document.createElement('div')
@@ -202,16 +213,17 @@ function addGloss(n) {
     newCheck.classList.add('py-check');
     newCheck.addEventListener('change', togglePinyin(totalGlosses));
     
+    const prevNew = document.getElementsByClassName('new')
+    if (prevNew[0]){
+        prevNew[0].classList.remove('new')
+    }
 
     newEntry.append(newCheck);
 
     glossEntries.prepend(newEntry);
     totalGlosses++
 
-    const prevNew = document.getElementsByClassName('new')
-    if (prevNew[0]){
-        prevNew[0].classList.remove('new')
-    }
+
 
     updateDraggables()
 }
@@ -329,8 +341,7 @@ function dehighlightText() {
 }
 
 function togglePinyin(idx) {
-
-    
+   
     return function () {
         const parentElem = document.querySelector('#gloss' + idx);
         const isChecked = parentElem.querySelector('input').checked;
@@ -345,5 +356,36 @@ function togglePinyin(idx) {
                 rt.classList.remove('show')
             })
         }
+    }
+}
+
+document.addEventListener('keydown', function(event) {
+    switch (event.key) {
+        case "ArrowUp":
+        case "PageUp":
+            clearGlosses();
+            break;
+        case "ArrowDown":
+        case "PageDown":
+            event.preventDefault();
+            nextSnip();
+            break;
+        case "b":
+            flipGlosses();
+            break;
+    }
+});
+
+function nextSnip() {
+    currentIdx++
+    while (
+        !document.querySelector('#n' + currentIdx) 
+        && currentIdx < Array.from(fullText.children).length * 2 + 1
+    ) {
+        currentIdx++
+    }
+
+    if (currentIdx < Array.from(fullText.children).length * 2 + 1) {
+        highlightTranslate(currentIdx)
     }
 }

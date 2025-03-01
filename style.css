@@ -68,6 +68,8 @@ body {
 }
 
 .snip {
+    user-select: none;
+    border-radius: 5px;
     transition: background 0.5s, padding 0.5s;
 }
 
@@ -183,6 +185,7 @@ body {
 
 .entry {
     display: flex;
+    gap: 15px;
     border-bottom: 1px solid;
     transition: font-size 0.5s, color 0.5s;
     position: relative;
@@ -190,7 +193,6 @@ body {
 
 .color {
     padding: 0 5px;
-    border-radius: 5px;
 }
 
 .pro.color {
@@ -375,4 +377,8 @@ rt.show {
     right: 0;
     top: 50%;
     transform: translateY(-50%)
+}
+
+.resize-txt {
+    user-select: none;
 }

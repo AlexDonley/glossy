@@ -33,8 +33,7 @@ export function fillMaxFontSize(elem, word, margin, min) {
     changeFS--
     childDiv.style.fontSize = changeFS + "pt"
 
-    const newDimensions = childDiv.getBoundingClientRect()
-    console.log(parentLimits, newDimensions, changeFS)
+    // const newDimensions = childDiv.getBoundingClientRect()
 }
 
 window.addEventListener('resize', (event) => {
@@ -47,7 +46,6 @@ export function resizeLimitedTexts() {
     allResize.forEach(elem => {
         if (elem.children[0]) {
             const inTxt = elem.children[0].innerText;
-            console.log(inTxt)
             fillMaxFontSize(elem, inTxt, 15);
         }
     })
