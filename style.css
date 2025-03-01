@@ -132,20 +132,6 @@ body {
     border-radius: 20px;
     font-weight: bold;
 }
-.gloss-btn.clear {
-    right: 190px
-}
-.gloss-btn.flip {
-    right: 140px
-}
-.gloss-btn.menu {
-    left: 180px;
-    bottom: 15px
-}
-.gloss-btn.de-highlight {
-    left: 130px;
-    bottom: 15px;
-}
 
 .gloss {
     position: relative;
