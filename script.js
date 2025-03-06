@@ -250,7 +250,7 @@ glossEntries.addEventListener('dragover', e => {
     const afterElement = placeDraggedElement(e.clientY)
     console.log(afterElement)
 
-    currentDrag = document.querySelector('.dragging')
+    const currentDrag = document.querySelector('.dragging')
 
     if (afterElement == null) {
         glossEntries.appendChild(currentDrag)
