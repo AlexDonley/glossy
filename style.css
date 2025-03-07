@@ -175,6 +175,7 @@ body {
 
 .entries{
     font-size: 40pt;
+    user-select: none;
     overflow-y: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -381,4 +382,22 @@ rt.show {
 
 .resize-txt {
     user-select: none;
+}
+
+.drag-handle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: calc(100% - 6px);
+    width: max(10%, 40px);
+    display: flex;
+    align-items: center;
+    background: linear-gradient(
+        90deg, 
+        rgba(255, 255, 255, 0.8), 
+        rgba(255, 255, 255, 0.0)
+    );
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    margin: 3px 0px;
 }
