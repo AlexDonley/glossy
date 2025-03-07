@@ -384,10 +384,12 @@ document.addEventListener('keydown', function(event) {
     switch (event.key) {
         case "ArrowUp":
         case "PageUp":
+        case "ArrowLeft":
             clearGlosses();
             break;
         case "ArrowDown":
         case "PageDown":
+        case "ArrowRight":
             event.preventDefault();
             nextSnip();
             break;
