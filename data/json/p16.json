@@ -115,13 +115,23 @@
     "pos": "noun"
   },
   {
+    "english": "sun",
+    "chinese": "太陽",
+    "pos": "noun"
+  },
+  {
     "english": ",",
     "chinese": "",
     "pos": ""
   },
   {
-    "english": "sun",
-    "chinese": "太陽",
+    "english": "watch",
+    "chinese": "手錶",
+    "pos": "noun"
+  },
+  {
+    "english": "repairs",
+    "chinese": "維修",
     "pos": "noun"
   },
   {
@@ -186,7 +196,7 @@
   },
   {
     "english": "model",
-    "chinese": "模型",
+    "chinese": "模特",
     "pos": "noun"
   },
   {
