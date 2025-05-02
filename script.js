@@ -41,7 +41,7 @@ const availableGlosses = [
     'p3', 'p6', 'p7', 'p8', 'p9', 
     'p10', 'p11', 'p12', 'p13', 'p14', 
     'p15', 'p16', 'p17', 'p18', 'p19',
-    'p20', 'halloween', 'christmas', 'children'
+    'p20', 'p21', 'halloween', 'christmas', 'children'
 ]
 const sessionKeys = Object.keys(sessionStorage)
 
