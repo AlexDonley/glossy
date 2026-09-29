@@ -1,13 +1,23 @@
 [
   {
-    "english": "Hungry Mungry",
-    "chinese": "餓鬼芒格利",
+    "english": "Hungry",
+    "chinese": "餓",
+    "pos": "adj"
+  },
+  {
+    "english": "Mungry",
+    "chinese": "(鬼)芒格利",
     "pos": "noun"
   },
   {
-    "english": "sat at",
-    "chinese": "坐在",
+    "english": "sat",
+    "chinese": "坐",
     "pos": "verb"
+  },
+  {
+    "english": "at",
+    "chinese": "在",
+    "pos": "prep"
   },
   {
     "english": "supper",
