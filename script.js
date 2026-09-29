@@ -39,10 +39,10 @@ let menuTog = true;
 
 const availableGlosses = [
     'apple', 'hungry1',
-    'p3', 'p6', 'p7', 'p8', 'p9', 
-    'p10', 'p11', 'p12', 'p13', 'p14', 
-    'p15', 'p16', 'p17', 'p18', 'p19',
-    'p20', 'p21', 'halloween', 'christmas', 'children', 'dragonboat'
+    'tangled1', 'tangled2', 'joseph1', 'joseph2', 
+    'pay_it1', 'pay_it2', 'sick1', 'sick2', 'work', 
+    'fly', 'busytown1', 'busytown2', 'busytown3', 'busytown4',
+    'busytown5', 'busytown6', 'halloween', 'christmas', 'children', 'dragonboat'
 ]
 const sessionKeys = Object.keys(sessionStorage)
 
